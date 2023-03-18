@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+    <style>
+        .dropdownmenu ul, .dropdownmenu li {
+            margin: 0;
+            padding: 0;
+        }
+        .dropdownmenu ul {
+            background: gray;
+            list-style: none;
+            width: 100%;
+        }
+        .dropdownmenu li {
+            float: left;
+            position: relative;
+            width:auto;
+        }
+        .dropdownmenu a {
+            background: #30A6E6;
+            color: #FFFFFF;
+            display: block;
+            font: bold 12px/20px sans-serif;
+            padding: 20px 134px;
+            text-align: center;
+            text-decoration: none;
+            -webkit-transition: all .25s ease;
+            -moz-transition: all .25s ease;
+            -ms-transition: all .25s ease;
+            -o-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+        .dropdownmenu li:hover a {
+            background: #000000;
+        }
+        
+        button {
+          background-color: white;
+          border-radius: 10px;
+          color: rgb(69, 141, 236);
+          padding: 15px 35px;
+          margin: 25px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        
+        
+        .btn {
+          border-color: #2196F3;
+          color: dodgerblue
+        }
+        
+        .btn:hover {
+          background: #2196F3;
+          color: white;
+        }
+        
+        .btn:active {
+          background-color: #2196F3;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+        }
+        .form {
+         padding: 10px;
+         border: 2px solid #30A6E6;
+         margin: 0;
+         border-radius: 10px;
+        }
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        .column {
+          float: left;
+          width: 50%;
+          padding: 0px;
+          height: 750px; 
+        }
+      </style>
+</head>
+<body style="height: 100%; overflow: hidden;">
+  <div class="row">
+    <div class="column">
+    <img src="{{url_for('static' , filename='report.jpg')}}" alt="Medical" style = "width: 625px;height: 570px ; object-fit: cover;">
+    </div>
+    <nav class="dropdownmenu">
+		<ul>
+		  <li><a href="{{ url_for('home')}}">Home</a></li>
+		  <li><a href="{{ url_for('about')}}">About Us</a></li>
+		</ul>
+	</nav>
+		<br>
+		<br>
+        <br>
+        <form method = "POST" action = "{{ url_for('records')}}">
+        <fieldset class="form" margin-left=150px>
+            <legend><h3 style="color: #30A6E6 ; font: 1em sans-serif; font-size: large;"><b>Disease Diagnosed</b></h3></legend>
+                <h1 id="disease" name="disease"><font style="color: #2196F3;"> {{ prediction }}</font></h1>
+                <input type="text" style="display: none" name="dise" value= {{prediction}} multiple>
+              
+        </fieldset>
+        <br>
+        <br>
+
+        <fieldset class="form" margin-left=150px>
+          <legend><h3 style="color: #30A6E6 ; font: 1em sans-serif; font-size: large;"><b>Precaution</b></h3></legend>
+              <h4><font style="color: #2196F3;"> {{ prec }}</font></h1>
+      </fieldset>
+      <br>
+      <br>
+        
+        <div align="center">
+          <button type = "submit" class = "btn" >View Records</button>
+        </div>
+        </form>
+             
+      </div>
+</body>
+</html>

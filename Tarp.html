@@ -1,0 +1,140 @@
+<html>
+<title>Home</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropdownmenu ul, .dropdownmenu li {
+    margin: 0;
+    padding: 0;
+}
+.dropdownmenu ul {
+    background: gray;
+    list-style: none;
+    width: 100%;
+}
+.dropdownmenu li {
+    float: left;
+    position: relative;
+    width:auto;
+}
+.dropdownmenu a {
+    background: #30A6E6;
+    color: #FFFFFF;
+    display: block;
+    font: bold 12px/20px sans-serif;
+    padding: 20px 134px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.dropdownmenu li:hover a {
+    background: #000000;
+}
+
+button {
+  background-color: white;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 35px;
+  margin: 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+.btn {
+  border-color: #2196F3;
+  color: dodgerblue
+}
+
+.btn:hover {
+  background: #2196F3;
+  color: white;
+}
+
+.btn:active {
+  background-color: #2196F3;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.form {
+  width: 32px;
+  padding: 10px;
+  border: 2px solid #30A6E6;
+  margin: 0;
+  border-radius: 10px;
+}
+
+input {
+  width: 45%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #30A6E6;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 0px;
+  height: 750px; 
+}
+
+.form {
+     margin: 50;
+     width: 30%;
+     position: absolute;
+     font-size:20px;
+     top: 50%;
+     left: 70%;
+     transform: translate(-50%, -50%);
+     border : "thick solid #0000FF";
+     padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body style="height: 100%; overflow: hidden;">
+<div class="row">
+  <div class="column">
+	<img src="{{url_for('static' , filename='doc.jpeg')}}" alt="Medical" style = "width: 625px;height: 570px ; object-fit: cover;">
+  </div>
+<nav class="dropdownmenu">
+<ul>
+  <li><a href="{{ url_for('home')}}">Home</a></li>
+  <li><a href="{{ url_for('about')}}">About Us</a></li>
+</ul>
+</nav>
+
+<form method="POST" action ="{{ url_for('symptoms')}}" autocomplete="off">
+<fieldset class="form">
+<legend><h3 style="color: #30A6E6 ; font: 1em sans-serif;"><b>Register Here</b></h3></legend>
+<input type="text" id="name" name="name" placeholder="First name" pattern="[A-Za-z]{2,}" title="Name can contain only alphabets" required>
+<input type="number" id="age" name="age" placeholder="Your age" min="5" max="99" required>  
+<br>
+<input type="number" id="height" name="height" placeholder="Your height in (ft.in)" step=".01" min="2" max="7" required> 
+<input type="number" id="weight" name="weight" placeholder="Your weight in (kgs)" step=".01" min="10" max="120" required>
+<br>
+<input type="text" id="phone" name="phone" placeholder="Your contact no." pattern="[0-9]{10}" title="Contact no. should be 10 digits" required>
+<br>
+<button type="submit" value="Next" class="btn">Next</button>
+<button type="reset" value="Reset" class="btn">Reset</button>
+</fieldset>
+</form>
+</div>
+</div>
+</body>
+</html>

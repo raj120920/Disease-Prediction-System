@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Symptoms</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<style>
+        .dropdownmenu ul, .dropdownmenu li {
+            margin: 0;
+            padding: 0;
+        }
+        .dropdownmenu ul {
+            background: gray;
+            list-style: none;
+            width: 100%;
+        }
+        .dropdownmenu li {
+            float: left;
+            position: relative;
+            width:auto;
+        }
+        .dropdownmenu a {
+            background: #30A6E6;
+            color: #FFFFFF;
+            display: block;
+            font: bold 12px/20px sans-serif;
+            padding: 20px 288px;
+            text-align: center;
+            text-decoration: none;
+            -webkit-transition: all .25s ease;
+            -moz-transition: all .25s ease;
+            -ms-transition: all .25s ease;
+            -o-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+        .dropdownmenu li:hover a {
+            background: #000000;
+        }
+        
+        button {
+          background-color: white;
+          border-radius: 10px;
+          color: rgb(69, 141, 236);
+          padding: 15px 35px;
+          margin: 25px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        
+        
+        .btn {
+          border-color: #2196F3;
+          color: dodgerblue
+        }
+        
+        .btn:hover {
+          background: #2196F3;
+          color: white;
+        }
+        
+        .btn:active {
+          background-color: #2196F3;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+        }
+
+        .form {
+         padding: 10px;
+         border: 2px solid #30A6E6;
+         margin: 0;
+         border-radius: 10px;
+        }
+	</style>
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#checkBtn').click(function() {
+			  checked = $("input[type=checkbox]:checked").length;
+		
+			  if(checked<3) {
+				alert("You must select atleast 3 symptoms");
+				return false;
+			  }
+		
+			});
+		});
+		
+	</script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#checkBtn').click(function() {
+		  checked = $("input[type=checkbox]:checked").length;
+	
+		  if(checked>17) {
+			alert("You can select atmost 17 symptoms");
+			return false;
+		  }
+	
+		});
+	});
+	
+</script>
+
+</head>
+<body>
+	<nav class="dropdownmenu">
+		<ul>
+		  <li><a href="{{ url_for('home')}}">Home</a></li>
+		  <li><a href="{{ url_for('about')}}">About Us</a></li>
+		</ul>
+	</nav>
+		<br>
+		<br>
+		<br>
+	<form method="POST" action ="{{ url_for('result')}}">
+	<fieldset class="form">
+		<legend><h3 style="color: #30A6E6 ; font: 1em sans-serif; font-size: large;"><b>Visible Symptoms</b></h3></legend>
+	<table cellpadding="10" >
+		<tr>
+	
+			<td>
+			<input type="checkbox" name="Itching" value="1"><label>Itching</label>
+			<input type="hidden" name="Itching" value="0"></td>
+        	<td>
+        	<input type="checkbox" name="Skin Rash" value="1"><label>Skin Rash</label>
+			<input type="hidden" name="Skin Rash" value="0"></td>
+			<td>
+			<input type="checkbox" name="Nodal Skin Eruption" value="1"><label>Nodal Skin Eruption</label>
+			<input type="hidden" name="Nodal Skin Eruption" value="0"></td>
+			<td>
+			<input type="checkbox" name="Patchy Throat" value="1"><label>Patches in Throat</label>
+			<input type="hidden" name="Patchy Throat" value="0"></td>
+			<td>
+			<input type="checkbox" name="Yellowish Skin" value="1"><label>Yellowish Skin</label>
+			<input type="hidden" name="Yellowish Skin" value="0"></td>
+			<td>
+			<input type="checkbox" name="Sunken Eyes" value="1"><label>Sunken Eyes</label>
+			<input type="hidden" name="Sunken Eyes" value="0"></td>
+			<td>
+			<input type="checkbox" name="Yellowing of Eyes" value="1"><label>Yellowing of Eyes</label>
+			<input type="hidden" name="Yellowing of Eyes" value="0"></td>
+			</tr>
+			
+        	<tr>
+        	<td>
+        	<input type="checkbox" name="Redness-of Eyes" value="1"><label>Redness-of Eyes</label>
+			<input type="hidden" name="Redness-of Eyes" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Bruising" value="1"><label>Bruising</label>
+			<input type="hidden" name="Bruising" value="0"></td>
+			<td>
+			<input type="checkbox" name="Puffy(Face,Eyes)" value="1"><label>Puffy(Face,Eyes)</label>
+			<input type="hidden" name="Puffy(Face,Eyes)" value="0"></td>
+			<td>
+			<input type="checkbox" name="Brittle Nails" value="1"><label>Brittle Nails</label>
+			<input type="hidden" name="Brittle Nails" value="0"></td>
+			<td>
+			<input type="checkbox" name="Swollen Extremities" value="1"><label>Swollen Extremities</label>
+			<input type="hidden" name="Swollen Extremities" value="0"></td>
+			<td>
+			<input type="checkbox" name="Drying Tingling Lips" value="1"><label>Drying Tingling Lips</label>
+			<input type="hidden" name="Drying Tingling Lips" value="0"></td>
+			<td>
+			<input type="checkbox" name="Internal Itching" value="1"><label>Internal Itching</label>
+			<input type="hidden" name="Internal Itching" value="0"></td>
+			</tr>
+			<tr>
+				<td>
+        	<input type="checkbox" name="Red Spots over Body" value="1"><label>Red Spots over Body</label>
+			<input type="hidden" name="Red Spots over Body" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Dischromatic Patches" value="1"><label>Dischromatic Patches</label>
+			<input type="hidden" name="Dischromatic Patches" value="0"></td>
+			<td>
+			<input type="checkbox" name="Watering_from Eyes" value="1"><label>Watering from Eyes</label>
+			<input type="hidden" name="Watering_from Eyes" value="0"></td>
+			<td>
+			<input type="checkbox" name="Viens on Calf" value="1"><label>Viens on Calf</label>
+			<input type="hidden" name="Viens on Calf" value="0"></td>
+			<td>
+			<input type="checkbox" name="Puss filled Pimples" value="1"><label>Puss filled Pimples</label>
+			<input type="hidden" name="Puss filled Pimples" value="0"></td>
+			<td>
+			<input type="checkbox" name="Blackheads" value="1"><label>Blackheads</label>
+			<input type="hidden" name="Blackheads" value="0"></td>
+			<td>
+			<input type="checkbox" name="Scurring" value="1"><label>Scurring</label>
+			<input type="hidden" name="Scurring" value="0"></td>
+		</tr>
+			<tr>
+				<td>
+        	<input type="checkbox" name="Skin Peeling" value="1"><label>Skin Peeling</label>
+			<input type="hidden" name="Skin Peeling" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Silver like Dusting" value="1"><label>Silver like Dusting</label>
+			<input type="hidden" name="Silver like Dusting" value="0"></td>
+			<td>
+			<input type="checkbox" name="Small dents_in Nails" value="1"><label>Small dents in Nails</label>
+			<input type="hidden" name="Small dents_in Nails" value="0"></td>
+			<td>
+			<input type="checkbox" name="Inflamatory Nails" value="1"><label>Inflamatory Nails</label>
+			<input type="hidden" name="Inflamatory Nails" value="0"></td>
+			<td>
+			<input type="checkbox" name="Blister" value="1"><label>Blister</label>
+			<input type="hidden" name="Blister" value="0"></td>
+			<td>
+			<input type="checkbox" name="Red Sore around Nose" value="1"><label>Red Sore around Nose</label>
+			<input type="hidden" name="Red Sore around Nose" value="0"></td>
+			<td>
+			<input type="checkbox" name="Yellow Crust Ooze" value="1"><label>Yellow Crust Ooze</label>
+			<input type="hidden" name="Yellow Crust Ooze" value="0"></td>
+		</tr>
+        	
+        
+	</table> 
+	</fieldset>  
+    <br><br>
+		
+	<fieldset class="form">
+		<legend><h3 style="color: #30A6E6 ; font: 1em sans-serif; font-size: large;"><b>Pain Related Symptoms</b></h3></legend>
+		<table cellpadding="8">
+			<tr>
+			<td>
+			<input type="checkbox" name="Joint Pain" value="1"><label>Joint Pain</label>
+			<input type="hidden" name="Joint Pain" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Stomach Pain" value="1"><label>Stomach Pain</label>
+			<input type="hidden" name="Stomach Pain" value="0"></td>
+			<td>
+			<input type="checkbox" name="Muscle Wasting" value="1"><label>Muscle Wasting</label>
+			<input type="hidden" name="Muscle Wasting" value="0"></td>
+			<td>
+			<input type="checkbox" name="headache" value="1"><label>Headache</label>
+			<input type="hidden" name="headache" value="0"></td>
+			<td>
+			<input type="checkbox" name="Pain behind Eyes" value="1"><label>Pain behind Eyes</label>
+			<input type="hidden" name="Pain behind Eyes" value="0"></td>
+			<td>
+			<input type="checkbox" name="Back Pain" value="1"><label>Back Pain</label>
+			<input type="hidden" name="Back Pain" value="0"></td>
+			<td>
+			<input type="checkbox" name="Abdominal Pain" value="1"><label>Abdominal Pain</label>
+			<input type="hidden" name="Abdominal Pain" value="0"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>
+        	<input type="checkbox" name="Swelling Stomach" value="1"><label>Swelling Stomach</label>
+			<input type="hidden" name="Swelling Stomach" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Swelling Lymph node" value="1"><label>Swelling Lymph node</label>
+			<input type="hidden" name="Swelling Lymph node" value="0"></td>
+			<td>
+			<input type="checkbox" name="Throat Irritation" value="1"><label>Throat Irritation</label>
+			<input type="hidden" name="Throat Irritation" value="0"></td>
+			<td>
+			<input type="checkbox" name="Chest Pain" value="1"><label>Chest Pain</label>
+			<input type="hidden" name="Chest Pain" value="0"></td>
+			<td>
+			<input type="checkbox" name="Weak Limbs" value="1"><label>Weak Limbs</label>
+			<input type="hidden" name="Weak Limbs" value="0"></td>
+			<td>
+			<input type="checkbox" name="Pain_in Bowel Movem" value="1"><label>Pain in Bowel Movement</label>
+			<input type="hidden" name="Pain_in Bowel Movem" value="0"></td>
+			<td>
+			<input type="checkbox" name="Pain_in Anal region" value="1"><label>Pain in Anal region</label>
+			<input type="hidden" name="Pain_in Anal region" value="0"></td>
+		</tr>
+		<tr>
+			<td>
+        	<input type="checkbox" name="Neck Pain" value="1"><label>Neck Pain</label>
+			<input type="hidden" name="Neck Pain" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Cramps" value="1"><label>Cramps</label>
+			<input type="hidden" name="Cramps" value="0"></td>
+			<td>
+			<input type="checkbox" name="Swollen Legs" value="1"><label>Swollen Legs</label>
+			<input type="hidden" name="Swollen Legs" value="0"></td>
+			<td>
+			<input type="checkbox" name="Enlarged Thyroid" value="1"><label>Enlarged Thyroid</label>
+			<input type="hidden" name="Enlarged Thyroid" value="0"></td>
+			<td>
+			<input type="checkbox" name="Knee Pain" value="1"><label>Knee Pain</label>
+			<input type="hidden" name="Knee Pain" value="0"></td>
+			<td>
+			<input type="checkbox" name="Hip Joint Pain" value="1"><label>Hip Joint Pain</label>
+			<input type="hidden" name="Hip Joint Pain" value="0"></td>
+			<td>
+			<input type="checkbox" name="Muscle Weakness" value="1"><label>Muscle Weakness</label>
+			<input type="hidden" name="Muscle Weakness" value="0"></td>
+		</tr>
+		<tr>
+			<td>
+        	<input type="checkbox" name="Stiff Neck" value="1"><label>Stiff Neck</label>
+			<input type="hidden" name="Stiff Neck" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Swelling Joints" value="1"><label>Swelling Joints</label>
+			<input type="hidden" name="Swelling Joints" value="0"></td>
+			<td>
+			<input type="checkbox" name="Stiff Movement" value="1"><label>Stiff Movement</label>
+			<input type="hidden" name="Stiff Movement" value="0"></td>
+			<td>
+			<input type="checkbox" name="Weakness_in one Body Side" value="1"><label>Weakness in one Body Side</label>
+			<input type="hidden" name="Weakness_in one Body Side" value="0"></td>
+			<td>
+			<input type="checkbox" name="Muscle Pain" value="1"><label>Muscle Pain</label>
+			<input type="hidden" name="Muscle Pain" value="0"></td>
+			<td>
+			<input type="checkbox" name="Belly Pain" value="1"><label>Belly Pain</label>
+			<input type="hidden" name="Belly Pain" value="0"></td>
+			<td>
+			<input type="checkbox" name="Abdomen Distention" value="1"><label>Abdomen Distention</label>
+			<input type="hidden" name="Abdomen Distention" value="0"></td>
+		</tr><tr>
+
+			<td>
+			<input type="checkbox" name="Painful Walking" value="1"><label>Painful Walking</label>
+			<input type="hidden" name="Painful Walking" value="0"></td></tr>
+		</tr>
+	</table>
+    </fieldset>
+
+    <br><br>
+	<fieldset class="form">
+		<legend><h3 style="color: #30A6E6 ; font: 1em sans-serif; font-size: large;"><b>Excretory Symptoms</b></h3></legend>
+		<table cellpadding="10">
+		<tr>
+			<td>
+			<input type="checkbox" name="Vomiting" value="1"><label>Vomiting</label>
+			<input type="hidden" name="Vomiting" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Burining Micturition" value="1"><label>Burining Micturition</label>
+			<input type="hidden" name="Burining Micturition" value="0"></td>
+			<td>
+			<input type="checkbox" name="Spotting Urination" value="1"><label>Spotting Urination</label>
+			<input type="hidden" name="Spotting Urination" value="0"></td>
+			<td>
+			<input type="checkbox" name="Indigestion" value="1"><label>Indigestion</label>
+			<input type="hidden" name="Indigestion" value="0"></td>
+			<td>
+			<input type="checkbox" name="Dark Urine" value="1"><label>Dark Urine</label>
+			<input type="hidden" name="Dark Urine" value="0"></td>
+			<td>
+			<input type="checkbox" name="Nausea" value="1"><label>Nausea</label>
+			<input type="hidden" name="Nausea" value="0"></td>
+			<td>
+			<input type="checkbox" name="Constipation" value="1"><label>Constipation</label>
+			<input type="hidden" name="Constipation" value="0"></td>
+        	 </tr>
+        	 <tr>
+        	 <td>
+        	<input type="checkbox" name="Diarrhoea" value="1"><label>Diarrhoea</label>
+			<input type="hidden" name="Diarrhoea" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Yellow Urine" value="1"><label>Yellow Urine</label>
+			<input type="hidden" name="Yellow Urine" value="0"></td>
+			<td>
+			<input type="checkbox" name="Phlegm" value="1"><label>Phlegm</label>
+			<input type="hidden" name="Phlegm" value="0"></td>
+			<td>
+			<input type="checkbox" name="Sinus Pressure" value="1"><label>Sinus Pressure</label>
+			<input type="hidden" name="Sinus Pressure" value="0"></td>
+			<td>
+			<input type="checkbox" name="Running Nose" value="1"><label>Running Nose</label>
+			<input type="hidden" name="Running Nose" value="0"></td>
+			<td>
+			<input type="checkbox" name="Congestion" value="1"><label>Congestion</label>
+			<input type="hidden" name="Congestion" value="0"></td>
+			<td>
+			<input type="checkbox" name="Bloody Stool" value="1"><label>Bloody Stool</label>
+			<input type="hidden" name="Bloody Stool" value="0"></td>
+			</tr>
+			<tr>
+				<td>
+        	<input type="checkbox" name="Anus Irritation" value="1"><label>Anus Irritation</label>
+			<input type="hidden" name="Anus Irritation" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Bladder Discomfort" value="1"><label>Bladder Discomfort</label>
+			<input type="hidden" name="Bladder Discomfort" value="0"></td>
+			<td>
+			<input type="checkbox" name="Urine Foul Smell" value="1"><label>Urine Foul Smell</label>
+			<input type="hidden" name="Urine Foul Smell" value="0"></td>
+			<td>
+			<input type="checkbox" name="Continous feel of Urine" value="1"><label>Continous feel of Urine</label>
+			<input type="hidden" name="Continous feel of Urine" value="0"></td>
+			<td>
+			<input type="checkbox" name="Passage of Gases" value="1"><label>Passage of Gases</label>
+			<input type="hidden" name="Passage of Gases" value="0"></td>
+			<td>
+			<input type="checkbox" name="Abnormal Menstruation" value="1"><label>Abnormal Menstruation</label>
+			<input type="hidden" name="Abnormal Menstruation" value="0"></td>
+			<td>
+			<input type="checkbox" name="Polyuria" value="1"><label>Polyuria</label>
+			<input type="hidden" name="Polyuria" value="0"></td>
+			</tr>
+			<tr>
+				<td>
+        	<input type="checkbox" name="Mucoid Sputum" value="1"><label>Mucoid Sputum</label>
+			<input type="hidden" name="Mucoid Sputum" value="0"></td>
+			<td>
+        	<input type="checkbox" name="Rusty Sputum" value="1"><label>Rusty Sputum</label>
+			<input type="hidden" name="Rusty Sputum" value="0"></td>
+			<td>
+			<input type="checkbox" name="Stomach Bleeding" value="1"><label>Stomach Bleeding</label>
+			<input type="hidden" name="Stomach Bleeding" value="0"></td>
+			<td>
+			<input type="checkbox" name="Blood_in Sputum" value="1"><label>Blood in Sputum</label>
+			<input type="hidden" name="Blood_in Sputum" value="0"></td>
+		</tr>
+		</table>
+	</fieldset>
+	<br>
+
+	
+	<fieldset class="form">
+		<legend><h3 style="color: #30A6E6 ; font: 1em sans-serif; font-size: large;"><b>General Symptoms</b></h3></legend>
+	<table cellpadding="10">
+	<tr>
+	<td><input type="checkbox" name="continuous_sneezing" value="1"><label>Continuos Sneezing</label>
+	<input type="hidden" name="continuous_sneezing" value="0"></td>
+	<td><input type="checkbox" name="shivering" value="1"><label>Shivering</label>
+	<input type="hidden" name="shivering" value="0"></td>
+	<td><input type="checkbox" name="chills"value="1"><label>Chills</label>
+	<input type="hidden"name="chills" value="0"></td>
+	<td><input type="checkbox" name="acidity" value="1"><label>Acidity</label>
+	<input type="hidden" name="acidity" value="0"></td>
+	<td><input type="checkbox" name="ulcers_on_tongue" value="1"><label>Ulcers on Tongue</label>
+	<input type="hidden" name="ulcers_on_tongue" value="0"></td>
+	<td><input type="checkbox" name="fatigue" value="1"><label>Fatigue</label>
+	<input type="hidden" name="fatigue" value="0"></td>
+	<td><input type="checkbox" name="weight_gain" value="1"><label>Weight gain</label>
+	<input type="hidden" name="weight_gain" value="0"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" name=" anxiety" value="1"><label>Anxiety</label>
+	<input type="hidden" name="anxiety" value="0"></td>
+	<td><input type="checkbox" name="cold_hands_and_feets" value="1"><label>Cold hands and feet</label>
+	<input type="hidden" name="cold_hands_and_feets" value="0"></td>
+	<td><input type="checkbox" name="mood_swings" value="1"><label>Mood swings</label>
+	<input type="hidden" name="mood_swings" value="0"></td>
+	<td><input type="checkbox" name="weight_loss" value="1"><label>Weight loss</label>
+	<input type="hidden" name="weight_loss" value="0"></td>
+	<td><input type="checkbox" name="restlessness"value="1"><label>Restlessness</label>
+	<input type="hidden" name="restlessness" value="0"></td>
+	<td><input type="checkbox" name="lethargy" value="1"><label>Lethargy</label>
+	<input type="hidden" name="lethargy" value="0"></td>
+	<td><input type="checkbox" name="cough" value="1"><label>Cough</label>
+	<input type="hidden" name="cough" value="0"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" name="high_fever" value="1"><label>High fever</label>
+	<input type="hidden" name="high_fever" value="0"></td>
+	<td><input type="checkbox" name="breathlesness" value="1"><label>Breathlessness</label>
+	<input type="hidden" name="breathlesness" value="0"></td>
+	<td><input type="checkbox" name="sweating" value="1"><label>Sweating</label>
+	<input type="hidden" name="sweating" value="0"></td>
+	<td><input type="checkbox" name="dehydration" value="1"><label>Dehydration</label>
+	<input type="hidden" name="dehydration" value="0"></td>
+	<td><input type="checkbox" name="loss_of_appetite" value="1"><label>Loss of appetite</label>
+	<input type="hidden" name="loss_of_appetite" value="0"></td>
+	<td><input type="checkbox" name="mild_fever" value="1"><label>Mild fever</label>
+	<input type="hidden" name="mild_fever" value="0"></td>
+	<td><input type="checkbox" name="blurred_and_distorted vision" value="1"><label>Blurred and distorted vision</label>
+	<input type="hidden" name="blurred_and_distorted vision" value="0"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" name="fast_heart_rate" value="1"><label>Fast heart rate</label>
+	<input type="hidden" name="fast_heart_rate" value="0"></td>
+	<td><input type="checkbox" name="dizziness" value="1"><label>Dizziness</label>
+	<input type="hidden" name="dizziness" value="0"></td>
+	<td><input type="checkbox" name="cramps" value="1"><label>Cramps</label>
+	<input type="hidden" name="cramps" value="0"></td>
+	<td><input type="checkbox" name="obesity" value="1"><label>Obesity</label>
+	<input type="hidden" name="obesity" value="0"></td>
+	<td><input type="checkbox" name="excessive_hunger" value="1"><label>Excessive hunger</label>
+	<input type="hidden" name="excessive_hunger" value="0"></td>
+	<td><input type="checkbox" name="slurred_speech" value="1"><label>Slurred speech</label>
+	<input type="hidden" name="slurred_speech" value="0"></td>
+	<td><input type="checkbox" name="spinning_movements" value="1"><label>Spinning movements</label>
+	<input type="hidden" name="spinning_movements" value="0"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" name="loss_of_balance" value="1"><label>Loss of balance</label>
+	<input type="hidden" name="loss_of_balance" value="0"></td>
+	<td><input type="checkbox" name="unsteadiness" value="1"><label>Unsteadiness</label>
+	<input type="hidden" name="unsteadiness" value="0"></td>
+	<td><input type="checkbox" name="loss_of_smell" value="1"><label>Loss of smell</label>
+	<input type="hidden" name="loss_of_smell" value="0"></td>
+	<td><input type="checkbox" name="depression" value="1"><label>Depression</label>
+	<input type="hidden" name="depression" value="0"></td>
+	<td><input type="checkbox" name="irritability" value="1"><label>Irritability</label>
+	<input type="hidden" name="irritability" value="0"></td>
+	<td><input type="checkbox" name="altered_sensorium" value="1"><label>Altered sensorium</label>
+	<input type="hidden" name="altered_sensorium" value="0" ></td>
+	<td><input type="checkbox" name="increased_appetite" value="1"><label>Increased appetite</label>
+	<input type="hidden" name="increased_appetite" value="0"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" name="lack_of_concentration" value="1"><label>Lack of concentration</label>
+	<input type="hidden" name="lack_of_concentration" value="0"></td>
+	<td><input type="checkbox" name="visual_disturbances" value="1"><label>Visual disturbances</label>
+	<input type="hidden" name="visual_disturbances" value="0"></td>
+	<td><input type="checkbox" name="palpitations" value="1"><label>Palpitations</label>
+	<input type="hidden" name="palpitations" value="0"></td>
+	</tr>
+	</table>
+	</fieldset>
+	<br>
+	
+	<fieldset class="form">
+		<legend><h3 style="color: #30A6E6 ; font: 1em sans-serif; font-size: large;"><b>Other Symptoms</b></h3></legend>
+	<table cellpadding="10">
+	<tr>
+	<td><input type="checkbox" name="irregular_sugar_levels" value="1"><label>Irregular sugar levels</label>
+	<input type="hidden" name="irregular_sugar_levels" value="0"></td>
+	<td><input type="checkbox" name="acute_liver_failure" value="1"><label>Acute liver failure</label>
+	<input type="hidden" name="acute_liver_failure" value="0"></td>
+	<td><input type="checkbox" name="fluid_overload" value="1"><label>Fluid overload</label>
+	<input type="hidden" name="fluid_overload" value="0"></td>
+	<td><input type="checkbox" name="malaise" value="1"><label>Malaise</label>
+	<input type="hidden" name="malaise" value="0"></td>
+	<td><input type="checkbox" name="swollen_blood_vessel" value="1"><label>Swollen blood vessel</label>
+	<input type="hidden" name="swollen_blood_vessel" value="0"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" name="extra_marital_contacts" value="1"><label>Extra marital contacts</label>
+	<input type="hidden" name="extra_marital_contacts" value="0"></td>
+	<td><input type="checkbox" name="toxic_look_(typhos)" value="1"><label>Toxic look(typhos)</label>
+	<input type="hidden" name="toxic_look_(typhos)" value="0"></td>
+	<td><input type="checkbox" name="family_history" value="1"><label>Family history</label>
+	<input type="hidden" name="family_history" value="0"></td>
+	<td><input type="checkbox" name="receiving_blood_transfusion" value="1"><label>Receiving blood transfusion</label>
+	<input type="hidden" name="receiving_blood_transfusion" value="0"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" name="receiving_unsterile_injections" value="1"><label>Receiving unsterile transfusions</label>
+	<input type="hidden" name="receiving_unsterile_injections" value="0"></td>
+	<td><input type="checkbox" name="coma" value="1"><label>Coma</label>
+	<input type="hidden" name="coma" value="0"></td>
+	<td><input type="checkbox" name="history_of_alcohol_consumption" value="1"><label>History of  alcohol consumption</label>
+	<input type="hidden" name="history_of_alcohol_consumption" value="0"></td>
+	<td><input type="checkbox" name="fluid_overload1" value="1"><label>Fluid overload 1</label>
+	<input type="hidden" name="fluid_overload1" value="0"></td>
+	</tr>
+	</table>
+	</fieldset>
+	<br>
+    
+	<div align="center">
+		<button type="submit" value="Next" class="btn" id="checkBtn">Check</button>
+	</div>
+	</form>
+</body>
+</html>

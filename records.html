@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    #database {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #database td, #database th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #database tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #databases tr:hover {background-color: #ddd;}
+    
+    #database th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color:  #052036;
+      color: white;
+    }
+    .dropdownmenu ul, .dropdownmenu li {
+    margin: 0;
+    padding: 0;
+}
+.dropdownmenu ul {
+    background: gray;
+    list-style: none;
+    width: 100%;
+}
+.dropdownmenu li {
+    float: left;
+    position: relative;
+    width:auto;
+}
+.dropdownmenu a {
+    background: #30A6E6;
+    color: #FFFFFF;
+    display: block;
+    font: bold 12px/20px sans-serif;
+    padding: 20px 290.166px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.dropdownmenu li:hover a {
+    background: #000000;
+}
+
+button {
+  background-color: white;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 35px;
+  margin: 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+.btn {
+  border-color: #2196F3;
+  color: dodgerblue
+}
+
+.btn:hover {
+  background: #2196F3;
+  color: white;
+}
+
+.btn:active {
+  background-color: #2196F3;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.form {
+  width: 32px;
+  padding: 10px;
+  border: 2px solid #30A6E6;
+  margin: 0;
+  border-radius: 10px;
+}
+
+input {
+  width: 45%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #30A6E6;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 0px;
+  height: 750px; 
+}
+
+.form {
+     margin: 50;
+     width: 30%;
+     position: absolute;
+     font-size:20px;
+     top: 50%;
+     left: 70%;
+     transform: translate(-50%, -50%);
+     border : "thick solid #0000FF";
+     padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+    </style>
+</head>
+<body>
+
+  <nav class="dropdownmenu">
+    <ul>
+      <li><a href="{{ url_for('home')}}">Home</a></li>
+      <li><a href="{{ url_for('about')}}">About Us</a></li>
+    </ul>
+    </nav>
+
+    <table class="table" id="database">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Age</th>
+            <th scope="col">Height</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Disease</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for final in final_data %}
+          <tr>
+            <td scope="row">{{final[1]}}</td>
+            <td>{{final[2]}}</td>
+            <td>{{final[3]}}</td>
+            <td>{{final[4]}}</td>
+            <td>{{final[5]}}</td>
+            <td>{{final[6]}}</td>
+            <td>{{final[7]}}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <br>
+      <form action ="https://www.practo.com/">
+        <div align="center">
+          <button type="submit" value="Next" class="btn">Book Appointment</button>
+        </div>
+      </form>
+      <form  action ="{{ url_for('home')}}">
+        <div align="center">
+          <button type="submit" class="btn">Not Now</button>
+        </div>
+      </form>
+
+      
+</body>
+</html>
